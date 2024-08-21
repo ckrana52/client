@@ -102,7 +102,7 @@ function Footer() {
                 </Link>
                 <Link href="/refund-return-policy">
                   <a className="text-sm text-center md:text-left text-white text-opacity-70 hover:text-opacity-100 cursor-pointer block mb-3 last:mb-0">
-                    Refund and Return Policy
+                    Refund and Return Policy 2
                   </a>
                 </Link>
               </div>
