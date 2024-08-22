@@ -54,7 +54,7 @@ function ProfilePage() {
           className="md:container"
           style={{
             backgroundImage: ` linear-gradient(0deg, black, transparent),
-            url(/foggy-cover.jpg)
+            url(/profile-banner.jpg)
           `,
             backgroundSize: '100% 100%',
             backgroundRepeat: 'no-repeat',
