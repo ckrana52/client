@@ -38,7 +38,7 @@ function Footer() {
                   className="
                   flex items-center justify-center flex-shrink-0 px-4 py-3 border-r border-white border-opacity-25"
                 >
-                  <BsTelegram size={25} color="#fff" />
+                  <BsTelegram size={25} color="#f6f2ef" />
                 </div>
 
                 <div className="px-3 py-2.5">
@@ -64,7 +64,7 @@ function Footer() {
                   className="
                   flex items-center justify-center flex-shrink-0 px-4 py-3 border-r border-white border-opacity-25"
                 >
-                  <BsTelegram size={25} color="#fff" />
+                  <BsTelegram size={25} color="#f6f2ef" />
                 </div>
                 <div className="px-3 py-2.5">
                   <p className="text-white text-opacity-70 text-md">
