@@ -116,7 +116,7 @@ function WalletPage() {
                       className="bg-white !ring-1 !ring-gray-200"
                     >
                       <Image
-                        src={`https://pay.topuparea.com/assets/template/images/${order?.payment_method}.png`}
+                        src={`https://pay.rrrtopup.com/assets/template/images/${order?.payment_method}.png`}
                         alt="Method"
                         width={200}
                         height={200}
