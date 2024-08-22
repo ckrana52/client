@@ -416,7 +416,7 @@ function TopupOrderPage({ productData }) {
                                   <div className="p-1.5 bg-white pb-2.5">
                                     <img
                                       className="w-full h-auto"
-                                      src="/logo.png"
+                                      src="/wallet-logo.JPG"
                                     />
                                   </div>
                                 }
