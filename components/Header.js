@@ -41,7 +41,7 @@ function Header() {
             <div className="max-w-[120px] md:max-w-[130px]">
               <Link href="/">
                 <a>
-                  <img src="/logo.png" alt="TopupArea" />
+                  <img src="/logo.png" alt="rrrtopup" />
                 </a>
               </Link>
             </div>

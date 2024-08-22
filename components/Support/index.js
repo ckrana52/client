@@ -31,7 +31,7 @@ export default function Support() {
         }`}
         target="_blank"
         rel="noreferrer"
-        href="https://t.me/topuparea526"
+        href="https://t.me/rrrtopup526"
       >
         <BsTelegram className="support-icon" />
       </a>
