@@ -21,6 +21,8 @@ import Shape from '../components/Shape'
 import Image from 'next/image';
 
 function WalletPage() {
+  const capitalized = string => string.charAt(0).toUpperCase() + string.slice(1);
+
   const { authUser } = useContext(globalContext);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const repay = (id) => {
@@ -92,14 +94,14 @@ function WalletPage() {
                   className="w-full block"
                   StartIcon={<BiTransfer size={20} color="#fffff" />}
                   >
-                  Topup Acount Balance
+                  Topup Account Balance
                 </Button>
               </a>
             </Link>
           </div>
         </div>
 
-        <h1 className="_section_title">My Transaction</h1>
+        <h1 className="_section_title mt-2">My Transaction</h1>
 
         <div className="space-y-5">
           {hasData(data) &&
@@ -125,16 +127,21 @@ function WalletPage() {
                     </Shape>
                     <div>
                       {/* <h6 className='_h6'>Pending</h6> */}
-                      <Badge
+                      {/* <Badge
                         type={order?.status}
                         text={order?.status === "cancel" ? "Canceled" : order?.status}
-                        className="!p-0 !bg-transparent !font-semibold !text-base"
-                      />
-                      <p className="_subtitle1 !text-sm">{order?.number}</p>
-                      <p className="_subtitle1 !text-sm text-gray-800">
+                        className="!p-0  !font-semibold !text-base"
+                      /> */}
+                      <p className='text-green-500 font-semibold'> {order?.status === "cancel" ? "Canceled" : capitalized(order?.status)}
+                      </p>
+                    <div className='flex items-center gap-x-1'>
+                    <p className="_subtitle1 !text-sm">Num:</p>
+                    <p>{order?.number}</p>
+                    </div>
+                      <div className='flex items-center gap-x-1'><p className="_subtitle1 !text-sm text-gray-800">
                         TnxID:
                       </p>
-                      <p> {order?.transaction_id || "------"}</p>
+                      <p className='text-sm'> {order?.transaction_id || "------"}</p></div>
                     </div>
                     {order?.is_automated == 1 && order?.status === "pending" && (
                       <>
@@ -163,11 +170,8 @@ function WalletPage() {
                       {order?.created_at}
                     </p>
                     <p className="_subtitle1 !text-base font-bold text-green-500">
-                      <Badge
-                        type={order?.status}
-                        className="!p-0 !bg-transparent !font-semibold !text-base"
-                        text={`BDT ${order?.amount}`}
-                      />
+                      <p>{order?.status, `BDT ${order?.amount}` }</p>
+                      
                     </p>
                   </div>
                   {order?.status === "under_review" && (
