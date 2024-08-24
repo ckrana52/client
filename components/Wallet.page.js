@@ -92,7 +92,7 @@ function WalletPage() {
                   className="w-full block"
                   StartIcon={<BiTransfer size={20} color="#fffff" />}
                 >
-                  Topup Acount Balance
+                  Topup Account Balance
                 </Button>
               </a>
             </Link>
