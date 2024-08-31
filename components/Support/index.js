@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { AiOutlineWhatsApp, AiFillMessage } from "react-icons/ai";
 import { BsTelegram, BsMessenger, BsHeadphones } from "react-icons/bs";
+import {FaGooglePlay } from "react-icons/fa";
 
 export default function Support() {
   const [isOpen, setIsOpen] = useState(false);
@@ -16,15 +17,15 @@ export default function Support() {
         <BsHeadphones className="support-icon" />
         <div className="buttonizer-label label-0-0-24">Support!</div>
       </a>
-      {/* <a
+       <a
         className={`buttonizer-button button-0-0-3 ${
           isOpen ? "opened-0-0-7" : ""
         }`}
         target="_blank"
-        href="http://m.me/tenbeabd"
+        href="https://play.google.com/store/apps/details?id=com.welfir.rrrtopup"
       >
-        <BsMessenger className="support-icon" />
-      </a> */}
+        <FaGooglePlay className="support-icon" />
+      </a>
       <a
         className={`buttonizer-button button-0-0-15 ${
           isOpen ? "opened-0-0-19" : ""

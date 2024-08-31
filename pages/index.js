@@ -59,6 +59,12 @@ function Home({ topup_products, products, banners }) {
         </div>
       </section>
       {/* Favourite games --End-- */}
+
+      <section className='mt-5 mb-10'>
+        <div className='mx-auto'>
+          <InstallApp />
+        </div>
+      </section>
     </>
   );
 }

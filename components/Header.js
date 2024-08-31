@@ -47,13 +47,13 @@ function Header() {
             </div>
             {/* Logo --End-- */}
 
-            {/* Header Search Bar --Start-- Only visible in desktop */}
+          {/* Header Search Bar --Start-- Only visible in desktop */}
             <div className="hidden md:block flex-grow md:px-16">
               <form>
                 <div className="flex items-center rounded-md overflow-hidden">
                   <input
                     type="text"
-                    placeholder="Search"
+                    placeholder="Search..."
                     style={{
                       borderTopRightRadius: 0,
                       borderBottomRightRadius: 0,
