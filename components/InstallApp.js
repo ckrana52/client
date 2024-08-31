@@ -1,5 +1,5 @@
 import React from "react";
-import { BsTelegram, BsTelephone, BsWhatsapp } from 'react-icons/bs';
+
 const InstallApp = () => {
   return (
     <div>
