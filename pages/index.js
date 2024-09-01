@@ -7,6 +7,8 @@ import Game from '../components/game';
 import { hasData, imgPath } from '../helpers/helpers';
 import FlatNotice from '../components/flat-notice/Notice';
 import InstallApp from '../components/InstallApp';
+
+
 function Home({ topup_products, products, banners }) {
   return (
     <>

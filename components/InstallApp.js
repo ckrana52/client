@@ -12,9 +12,9 @@ const InstallApp = () => {
         >
           
         <img
-            src="/play-image.WEBP"
+            src="/google-play.png"
             className="w-7/12 md:w-4/12 mx-auto"
-            alt="Coxgameshop app"
+            alt="rrr topup app"
         
         />
         <p className="text-center font-bold text-xl">Download Now</p>
