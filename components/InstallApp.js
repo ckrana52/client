@@ -17,7 +17,7 @@ const InstallApp = () => {
             alt="Coxgameshop app"
         
         />
-        <p className="text-center font-bold text-m">DOWNLOAD NOW</p>
+        <p className="text-center font-bold text-xl">Download Now</p>
         <a href={"https://play.google.com/store/apps/details?id=com.welfir.rrrtopup"}></a>
         
         </a>
