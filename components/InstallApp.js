@@ -14,7 +14,7 @@ const InstallApp = () => {
         <img
             src="/google-play.png"
             className="w-7/12 md:w-4/12 mx-auto"
-            alt="rrr topup app"
+            alt="rrrtopup app"
         
         />
         <p className="text-center font-bold text-xl">Download Now</p>
