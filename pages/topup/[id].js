@@ -31,7 +31,6 @@ import {
   setFlashMessage,
 } from '../../helpers/helpers';
 import { globalContext } from '../_app';
-import SelectedRadioPackage from '../../components/SelectedRadioPackage';
 
 function TopupOrderPage({ productData }) {
   const [selectedAccountType, setSelectedAccountType] = useState(null);
@@ -81,21 +80,32 @@ function TopupOrderPage({ productData }) {
   const initialValues = {
     playerid: '',
     selectedpackage: null,
-    payment_method: 'wallet',
+    payment_mathod: 'pay',
+    ...(!isActiveForTopup && {
+      accounttype: '',
+      ingamepassword: '',
+      securitycode: '',
+    }),
   };
 
   // Form Validation Schema
-  const validationSchema = Yup.object().shape({
+  const validationSchema = productInfo?.topup_type === 'voucher' ? Yup.object().shape({
     selectedpackage: Yup.object().nullable().required('Select a package'),
-    payment_method: Yup.string().required().trim().label('Payment method'),
-    ...(['id_code', 'in_game'].includes(productInfo?.topup_type) && {
-      playerid: Yup.string()
-        .required(
-          isActiveForTopup
-            ? 'Player id is requierd'
-            : 'Account info is required'
-        )
-        .trim(),
+    payment_mathod: Yup.string().required().trim().label('Payment method'),
+  }) : Yup.object().shape({
+    playerid: Yup.string()
+      .required(
+        isActiveForTopup
+          ? 'Player id is requierd'
+          : 'Facebook or Gmail is required'
+      )
+      .trim(),
+    selectedpackage: Yup.object().nullable().required('Select a package'),
+    payment_mathod: Yup.string().required().trim().label('Payment method'),
+    ...(!isActiveForTopup && {
+      accounttype: Yup.string().required().label('Account type').trim(),
+      ingamepassword: Yup.string().required().trim().label('Password'),
+      ...(selectedAccountType === 'gmail' && {securitycode: Yup.string().required().trim().label('Account backup code')}),
     }),
   });
 
@@ -154,7 +164,7 @@ function TopupOrderPage({ productData }) {
                         selectedPaymentMethod === 'uddoktapay'
                           ? `<div class="_confirm_order_body">
                       <h4 class="_h4">Confirm Order</h4>
-                      <p className="modal_sub_title">You need pay <span class="_bold_it">৳${selectedpackage.price}</span></p>
+                      <p className="modal_sub_title">You need pay <span class="_bold_it">BDT${selectedpackage.price}</span> via Uddoktapay.</p>
                     </div>`
                           : `
                             <div class="_confirm_order_body">
@@ -238,6 +248,11 @@ function TopupOrderPage({ productData }) {
                     const isNotEnoughMoney =
                       values.selectedpackage?.price > authUser?.wallet;
 
+                    // useEffect(() => {
+                    //   isPackageIdError && setFieldTouched('selectedpackage');
+                    //   isPaymentError && setFieldTouched('payment_mathod');
+                    // }, [isPackageIdError, isPaymentError]);
+
                     return (
                       <div>
                         {isSubmitting && (
@@ -270,42 +285,77 @@ function TopupOrderPage({ productData }) {
                               ) : (
                                 // Visible If Product is Inactive For Topup --Start--
                                 <>
-                                  <div className="grid grid-cols-1 gap-4">
-                                    <textarea
-                                      rows={8}
-                                      cols={50}
-                                      placeholder="id : info@example.com
-                                      pass : 1234
-                                      Backup : 090270608, 99547821"
-                                      onChange={(e) => {
-                                        setFieldValue(
-                                          'playerid',
-                                          e.target.value
-                                        );
-                                      }}
+                                  <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                                    <div>
+                                      <label
+                                        htmlFor="accounttype"
+                                        className={`_subtitle2 mb-1.5 block ${
+                                          isAccountTypeError ? 'text-red-500' : ''
+                                        }`}
+                                      >
+                                        Account Type
+                                      </label>
+                                      <select
+                                        className={`_input small !rounded-full !py-2 ${
+                                          isAccountTypeError
+                                            ? '!border-red-500'
+                                            : ''
+                                        }`}
+                                        name="accounttype"
+                                        onChange={(e) => {
+                                          setSelectedAccountType(e.target.value);
+                                          return handleChange('accounttype')(e);
+                                        }}
+                                        onBlur={() =>
+                                          setFieldTouched('accounttype')
+                                        }
+                                      >
+                                        <option value="">Select an option</option>
+                                        <option value="facebook">Facebook</option>
+                                        <option value="gmail">Gmail</option>
+                                        <option value="3rd">3rd link</option>
+                                        <option value="Komani">Komani Login</option>
+                                      </select>
+                                      <FormikErrorMessage name="accounttype" />
+                                    </div>
+
+                                    <FormikInput
+                                      label={
+                                        isGmailSelected
+                                          ? 'Your email'
+                                          : 'Number Or Email'
+                                      }
+                                      placeholder={
+                                        isGmailSelected
+                                          ? 'Enter email'
+                                          : 'Enter number or email'
+                                      }
+                                      className="small"
                                       name="playerid"
-                                      className="border p-1 border-black rounded-md"
                                     />
+                                    <FormikInput
+                                      label="Password"
+                                      placeholder="Enter password"
+                                      className="small"
+                                      name="ingamepassword"
+                                    />
+                                    
                                   </div>
                                   <div>
-                                <div>
-                                  <p className="flex _body2 mt-1.5">
-                                    <a
-                                      target="_blank"
-                                      rel="noreferrer"
-                                      href={
-                                        "#"
-                                      }
-                                      className="blink_me flex gap-2"
-                                    >
-                                      <span className="text-lg">
-                                        <HiOutlineExternalLink size={22} />
-                                        কিভাবে এয়ার ড্রপ অর্ডার করবেন ?
-                                      </span>
-                                    </a>
-                                  </p>
-                                </div>
-                              </div>
+                                    <div>
+                                      <FormikInput
+                                        label={
+                                          isGmailSelected ? 'Gmail Backup Code' : 'Backup Code (অবশ্যই দিতে হবে)'
+                                        }
+                                        placeholder= "Enter backup code"
+                                        className="small"
+                                        name="securitycode"
+                                      />
+                                     
+                                        
+                                      
+                                    </div>
+                                  </div>
                                 </>
                                 // Visible If Product is Inactive For Topup --End--
                               )}
@@ -324,25 +374,27 @@ function TopupOrderPage({ productData }) {
                           </div>
 
                           <div className="order_box_body">
-                            <div className={`grid ${
-                                productInfo?.topup_type === 'voucher'
-                                  ? 'grid-cols-2 md:grid-cols-2'
-                                  : 'grid-cols-2 md:grid-cols-3'
-                              } gap-2.5`}>
+                            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-3 gap-2.5">
                               {/* Single Recharge --Start-- */}
                               {packages.map((pack, index) => {
                                 return (
-                                  <SelectedRadioPackage
-                                  key={index}
-                                  index={index}
-                                  packageItem={pack}
-                                  outOfStock={parseInt(pack?.in_stock) === 0}
-                                  onChange={() => {
-                                    setSelectedPackage(index);
-                                    setFieldValue("selectedpackage", pack);
-                                  }}
-                                  isError={isPackageIdError ? true : false}
-                                  isChecked={parseInt(selectedPackage) === index}
+                                  <SelectedRadio
+                                    key={index}
+                                    outOfStock={parseInt(pack?.in_stock) === 0}
+                                    onClick={() => {
+                                      setSelectedPackage(index);
+                                      setFieldValue('selectedpackage', pack);
+                                    }}
+                                    isError={isPackageIdError}
+                                    isSelected={
+                                      parseInt(selectedPackage) === index
+                                    }
+                                    topComponent={
+                                      <span className="px-1 py-2.5 inline-block">
+                                        {pack?.name}
+                                      </span>
+                                    }
+                                    bottomComponent={`BDT ${pack?.price} ৳`}
                                   />
                                 );
                               })}
@@ -373,6 +425,7 @@ function TopupOrderPage({ productData }) {
                               }
                             />
                           </div>
+
                           {productInfo.video_link && (
                             <div className="order_box_body">
                             <div>
@@ -411,12 +464,12 @@ function TopupOrderPage({ productData }) {
                             <div className="grid grid-cols-2 md:grid-cols-4 gap-2.5 md:gap-3">
                               <SelectedRadio
                                 // isSelected={true}
-                                bottomComponent={`Wallet Pay ${getUserWallet()}`}
+                                bottomComponent={`Wallet Balance ${getUserWallet()}`}
                                 topComponent={
                                   <div className="p-1.5 bg-white pb-2.5">
                                     <img
                                       className="w-full h-auto"
-                                      src="/wallet-logo.jpg"
+                                      src="/logo.png"
                                     />
                                   </div>
                                 }
@@ -467,10 +520,10 @@ function TopupOrderPage({ productData }) {
                         {/* Show Error After Submit Form --End-- */}
                         {selectedPaymentMethod == 'uddoktapay' && (
                           <p className="flex text-lg _body2 mt-1.5 mb-1.5">
-                            {/*<a
+                            <a
                               target="_blank"
                               rel="noreferrer"
-                              href={'https://youtu.be/eTelPQfCr_o'}
+                              href={'#'}
                               className="_link flex gap-2"
                             >
                               <HiOutlineExternalLink
@@ -478,7 +531,7 @@ function TopupOrderPage({ productData }) {
                                 className="flex-shrink-0"
                               />
                               {'কিভাবে Add Money করা ছাড়া অর্ডার করবেন?'}
-                        </a>*/}
+                            </a>
                           </p>
                         )}
                         <div className="flex mb-2 justify-end gap-3">
@@ -522,8 +575,7 @@ function TopupOrderPage({ productData }) {
                             type="submit"
                             loading={isSubmitting}
                           >
-                            { selectedPaymentMethod == 'uddoktapay' ? 'Pay now' :  'Buy Now'}
-
+                            { selectedPaymentMethod == 'uddoktapay' ? 'Pay Now' : 'Buy Now' }
                           </Button>
                         </div>
 
