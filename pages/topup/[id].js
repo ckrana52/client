@@ -490,7 +490,7 @@ function TopupOrderPage({ productData }) {
                             <div className="grid grid-cols-2 md:grid-cols-4 gap-2.5 md:gap-3">
                               <SelectedRadio
                                 // isSelected={true}
-                                bottomComponent={`Wallet Balance ${getUserWallet()}`}
+                                bottomComponent={`Wallet Pay ${getUserWallet()}`}
                                 topComponent={
                                   <div className="p-1.5 bg-white pb-2.5">
                                     <img
