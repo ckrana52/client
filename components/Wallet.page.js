@@ -137,7 +137,7 @@ function WalletPage() {
                           className={`font-semibold ${
                             order?.status === 'cancel'
                               ? 'text-red-500'
-                              : order?.status === 'complete'
+                              : order?.status === 'completed'
                               ? 'text-green-500'
                               : order?.status === 'pending'
                               ? 'text-black'
@@ -189,8 +189,20 @@ function WalletPage() {
                       <p className="_subtitle1 !text-sm text-gray-800">
                         {order?.created_at}
                       </p>
-                      <p className="_subtitle1 !text-base font-bold text-green-500">
-                        <p>{(order?.status, `BDT ${order?.amount}`)}</p>
+                      <p className="_subtitle1 !text-base font-bold">
+                        <span
+                          className={`${
+                            order?.status === 'cancel'
+                              ? 'text-red-500'
+                              : order?.status === 'complete'
+                              ? 'text-green-500'
+                              : order?.status === 'pending'
+                              ? 'text-black'
+                              : 'text-gray-500' // fallback color for other statuses
+                          }`}
+                        >
+                          {`BDT ${order?.amount}`}
+                        </span>
                       </p>
                     </div>
                     {order?.status === 'under_review' && (
