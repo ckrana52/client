@@ -104,14 +104,14 @@ function WalletPage() {
 
         <h1 className="_section_title mt-2">My Transaction</h1>
 
-        <div className="space-y-5">
+        <div className="space-y-5 bg-gray-200 p-4">
           {hasData(data) &&
             data.map((orderBlocks, index) => (
               <Fragment key={index}>
                 {orderBlocks.data.data.data.map((order, i) => (
                   <div
                     key={i}
-                    className="flex justify-between items-stretch flex-wrap border-b border-gray-200 py-3"
+                    className="flex justify-between items-stretch flex-wrap border-b border-gray-200  py-3"
                   >
                     <div className="flex items-start gap-3.5">
                       <Shape
