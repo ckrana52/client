@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 import { Autoplay, Navigation, Pagination } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import api from '../api/api';
@@ -8,11 +9,9 @@ import { hasData, imgPath } from '../helpers/helpers';
 import FlatNotice from '../components/flat-notice/Notice';
 import InstallApp from '../components/InstallApp';
 
-
 function Home({ topup_products, products, banners }) {
   return (
     <>
-  
       <FlatNotice />
       {hasData(banners) && (
         <section className="mb-6 md:my-8 home_slider_wrapper">
@@ -31,7 +30,11 @@ function Home({ topup_products, products, banners }) {
               {banners.map((banner, index) => (
                 <SwiperSlide key={index}>
                   <div>
-                    <a href={banner.link} target={banner.link === '#' ? '_self' : '_blank'} rel="noreferrer">
+                    <a
+                      href={banner.link}
+                      target={banner.link === '#' ? '_self' : '_blank'}
+                      rel="noreferrer"
+                    >
                       <img
                         src={imgPath(banner.banner)}
                         alt={banner.note}
@@ -45,10 +48,16 @@ function Home({ topup_products, products, banners }) {
           </div>
         </section>
       )}
-    {/* Favourite games --Start-- */}
-    <section className="container mt-5 mb-10">
-        <h3 style={{"fontFamily":  "'Black Ops One', cursive", "border-color":"#0D0D7A"}} className="_section_title border-b-4 !capitalize !text-2xl md:!text-4xl !mb-8">
-          <span className='text-primary-400 rounded-lg '>GAME TOP-UP</span>
+      {/* Favourite games --Start-- */}
+      <section className="container mt-5 mb-10">
+        <h3
+          style={{
+            fontFamily: "'Black Ops One', cursive",
+            'border-color': '#0D0D7A',
+          }}
+          className="_section_title border-b-4 !capitalize !text-2xl md:!text-4xl !mb-8"
+        >
+          <span className="text-primary-400 rounded-lg ">GAME TOP-UP</span>
         </h3>
         <ActivityIndicator data={topup_products} error={!topup_products} />
         <div className="grid grid-cols-3 md:grid-cols-5 md:justify-center mt-[40px] gap-3 md:gap-5 gap-y-6 md:gap-y-5">
@@ -62,8 +71,8 @@ function Home({ topup_products, products, banners }) {
       </section>
       {/* Favourite games --End-- */}
 
-      <section className='mt-5 mb-10'>
-        <div className='mx-auto'>
+      <section className="mt-5 mb-10">
+        <div className="mx-auto">
           <InstallApp />
         </div>
       </section>

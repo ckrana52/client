@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 /*
  *
  * Title: Header
@@ -17,7 +18,6 @@ import MobileSidebar from './MobileSidebar';
 import NoticePopup from './notice-popup/NoticePopup';
 import UserPopoverHead from './user-popover-menu/UserPopoverHead';
 import Support from './Support/index';
-
 
 function Header() {
   const router = useRouter();
@@ -47,7 +47,7 @@ function Header() {
             </div>
             {/* Logo --End-- */}
 
-          {/* Header Search Bar --Start-- Only visible in desktop */}
+            {/* Header Search Bar --Start-- Only visible in desktop */}
             <div className="hidden md:block flex-grow md:px-16">
               <form>
                 <div className="flex items-center rounded-md overflow-hidden">

@@ -1,3 +1,5 @@
+/* eslint-disable @next/next/no-img-element */
+/* eslint-disable jsx-a11y/alt-text */
 import { Formik } from 'formik';
 import Head from 'next/head';
 import Link from 'next/link';
@@ -89,25 +91,39 @@ function TopupOrderPage({ productData }) {
   };
 
   // Form Validation Schema
-  const validationSchema = productInfo?.topup_type === 'voucher' ? Yup.object().shape({
-    selectedpackage: Yup.object().nullable().required('Select a package'),
-    payment_mathod: Yup.string().required().trim().label('Payment method'),
-  }) : Yup.object().shape({
-    playerid: Yup.string()
-      .required(
-        isActiveForTopup
-          ? 'Player id is requierd'
-          : 'Facebook or Gmail is required'
-      )
-      .trim(),
-    selectedpackage: Yup.object().nullable().required('Select a package'),
-    payment_mathod: Yup.string().required().trim().label('Payment method'),
-    ...(!isActiveForTopup && {
-      accounttype: Yup.string().required().label('Account type').trim(),
-      ingamepassword: Yup.string().required().trim().label('Password'),
-      ...(selectedAccountType === 'gmail' && {securitycode: Yup.string().required().trim().label('Account backup code')}),
-    }),
-  });
+  const validationSchema =
+    productInfo?.topup_type === 'voucher'
+      ? Yup.object().shape({
+          selectedpackage: Yup.object().nullable().required('Select a package'),
+          payment_mathod: Yup.string()
+            .required()
+            .trim()
+            .label('Payment method'),
+        })
+      : Yup.object().shape({
+          playerid: Yup.string()
+            .required(
+              isActiveForTopup
+                ? 'Player id is requierd'
+                : 'Facebook or Gmail is required'
+            )
+            .trim(),
+          selectedpackage: Yup.object().nullable().required('Select a package'),
+          payment_mathod: Yup.string()
+            .required()
+            .trim()
+            .label('Payment method'),
+          ...(!isActiveForTopup && {
+            accounttype: Yup.string().required().label('Account type').trim(),
+            ingamepassword: Yup.string().required().trim().label('Password'),
+            ...(selectedAccountType === 'gmail' && {
+              securitycode: Yup.string()
+                .required()
+                .trim()
+                .label('Account backup code'),
+            }),
+          }),
+        });
 
   const getUserWallet = () => {
     return authUser ? `(৳: ${authUser?.wallet})` : '';
@@ -290,7 +306,9 @@ function TopupOrderPage({ productData }) {
                                       <label
                                         htmlFor="accounttype"
                                         className={`_subtitle2 mb-1.5 block ${
-                                          isAccountTypeError ? 'text-red-500' : ''
+                                          isAccountTypeError
+                                            ? 'text-red-500'
+                                            : ''
                                         }`}
                                       >
                                         Account Type
@@ -303,18 +321,26 @@ function TopupOrderPage({ productData }) {
                                         }`}
                                         name="accounttype"
                                         onChange={(e) => {
-                                          setSelectedAccountType(e.target.value);
+                                          setSelectedAccountType(
+                                            e.target.value
+                                          );
                                           return handleChange('accounttype')(e);
                                         }}
                                         onBlur={() =>
                                           setFieldTouched('accounttype')
                                         }
                                       >
-                                        <option value="">Select an option</option>
-                                        <option value="facebook">Facebook</option>
+                                        <option value="">
+                                          Select an option
+                                        </option>
+                                        <option value="facebook">
+                                          Facebook
+                                        </option>
                                         <option value="gmail">Gmail</option>
                                         <option value="3rd">3rd link</option>
-                                        <option value="Komani">Komani Login</option>
+                                        <option value="Komani">
+                                          Komani Login
+                                        </option>
                                       </select>
                                       <FormikErrorMessage name="accounttype" />
                                     </div>
@@ -339,21 +365,19 @@ function TopupOrderPage({ productData }) {
                                       className="small"
                                       name="ingamepassword"
                                     />
-                                    
                                   </div>
                                   <div>
                                     <div>
                                       <FormikInput
                                         label={
-                                          isGmailSelected ? 'Gmail Backup Code' : 'Backup Code (অবশ্যই দিতে হবে)'
+                                          isGmailSelected
+                                            ? 'Gmail Backup Code'
+                                            : 'Backup Code (অবশ্যই দিতে হবে)'
                                         }
-                                        placeholder= "Enter backup code"
+                                        placeholder="Enter backup code"
                                         className="small"
                                         name="securitycode"
                                       />
-                                     
-                                        
-                                      
                                     </div>
                                   </div>
                                 </>
@@ -428,26 +452,28 @@ function TopupOrderPage({ productData }) {
 
                           {productInfo.video_link && (
                             <div className="order_box_body">
-                            <div>
-                              <p className="flex _body2 mt-1.5">
-                                <a
-                                  target="_blank"
-                                  rel="noreferrer"
-                                  href={productInfo.video_link}
-                                  className="blink_me flex gap-2"
-                                >
-                                  <span className="text-lg">
-                                    <HiOutlineExternalLink
-                                      className="inline"
-                                      size={24}
-                                    />{" "}
-                                    {'কিভাবে Voucher Redeem করবেন ভিডিও দেখুন?'}
-                                  </span>
-                                </a>
-                              </p>
+                              <div>
+                                <p className="flex _body2 mt-1.5">
+                                  <a
+                                    target="_blank"
+                                    rel="noreferrer"
+                                    href={productInfo.video_link}
+                                    className="blink_me flex gap-2"
+                                  >
+                                    <span className="text-lg">
+                                      <HiOutlineExternalLink
+                                        className="inline"
+                                        size={24}
+                                      />{' '}
+                                      {
+                                        'কিভাবে Voucher Redeem করবেন ভিডিও দেখুন?'
+                                      }
+                                    </span>
+                                  </a>
+                                </p>
+                              </div>
                             </div>
-                          </div>
-                        )}
+                          )}
                         </div>
                         {/* Select Recharge --End-- */}
 
@@ -575,16 +601,16 @@ function TopupOrderPage({ productData }) {
                             type="submit"
                             loading={isSubmitting}
                           >
-                            { selectedPaymentMethod == 'uddoktapay' ? 'Pay Now' : 'Buy Now' }
+                            {selectedPaymentMethod == 'uddoktapay'
+                              ? 'Pay Now'
+                              : 'Buy Now'}
                           </Button>
                         </div>
 
                         <div className="_order_box_wrapper">
                           <div className="_order_box_header">
                             <div className="_order_header_step_circle">4</div>
-                            <h5 className="_order_header_title">
-                              Description
-                            </h5>
+                            <h5 className="_order_header_title">Description</h5>
                           </div>
 
                           <div className="order_box_body">

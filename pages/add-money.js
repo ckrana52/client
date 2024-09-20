@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 import { Formik } from 'formik';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
@@ -381,8 +382,6 @@ function AddMoneyPage() {
                               errors={errors}
                               initialValues={initialValues}
                             />
-
-                      
 
                             <Button
                               type="submit"

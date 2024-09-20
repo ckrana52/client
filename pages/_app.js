@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-page-custom-font */
 import Head from 'next/head';
 import Router, { useRouter } from 'next/router';
 import Nprogress from 'nprogress';
@@ -110,8 +111,15 @@ function MyApp({ Component, pageProps }) {
         <link rel="manifest" href="/manifest.json" />
         <link rel="apple-touch-icon" href="/icon-192x192.png" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="true" />
-        <link href="https://fonts.googleapis.com/css2?family=Black+Ops+One&family=Chicle&family=Poppins&display=swap" rel="stylesheet" />
+        <link
+          rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossOrigin="true"
+        />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Black+Ops+One&family=Chicle&family=Poppins&display=swap"
+          rel="stylesheet"
+        />
         <meta name="theme-color" content="#fff" />
         <meta
           name="description"

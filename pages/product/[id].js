@@ -1,3 +1,5 @@
+/* eslint-disable @next/next/no-img-element */
+/* eslint-disable jsx-a11y/alt-text */
 import Head from 'next/head';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
