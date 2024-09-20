@@ -38,7 +38,7 @@ function NoticePopup() {
         {/* Close Popup --Start-- */}
         <div
           onClick={() => closeModal(data?.id)}
-          className="w-8 h-8 rounded-full overflow-hidden absolute bottom-[calc(100%+6px)] right-[6px] sm:top-0 sm:left-full _flex_center bg-white sm:-translate-x-1/2 sm:-translate-y-1/2 p-1 border border-gray-200 cursor-pointer hover:scale-110 duration-100"
+          className="w-8 h-8 rounded-full overflow-hidden absolute bottom-[calc(100%+3px)] right-[6px] sm:top-0 sm:left-full _flex_center bg-white sm:-translate-x-1/2 sm:-translate-y-1/2 p-1 border border-gray-200 cursor-pointer hover:scale-110 duration-100"
         >
           <IoCloseSharp className="w-full h-full" />
         </div>
@@ -62,7 +62,7 @@ function NoticePopup() {
                   rel="noreferrer"
                   className="_btn"
                 >
-                  Click Here
+                  টেলিগ্রাম লিংক
                 </a>
               </div>
             )}
