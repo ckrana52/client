@@ -194,7 +194,7 @@ function WalletPage() {
                           className={`${
                             order?.status === 'cancel'
                               ? 'text-red-500'
-                              : order?.status === 'complete'
+                              : order?.status === 'completed'
                               ? 'text-green-500'
                               : order?.status === 'pending'
                               ? 'text-black'
