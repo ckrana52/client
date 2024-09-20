@@ -104,7 +104,7 @@ function WalletPage() {
 
         <h1 className="_section_title mt-2">My Transaction</h1>
 
-        <div className="space-y-5 bg-gray-200 p-4">
+        <div className="space-y-5 bg-white border border-gray-200 p-4 pb-6">
           {hasData(data) &&
             data.map((orderBlocks, index) => (
               <Fragment key={index}>
