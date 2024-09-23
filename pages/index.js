@@ -14,7 +14,7 @@ function Home({ topup_products, products, banners }) {
     <>
       <FlatNotice />
       {hasData(banners) && (
-        <section className="mb-6 md:my-8 home_slider_wrapper">
+        <section className="mb-6 md:my-8 home_slider_wrapper rounded-xl">
           <div className="container">
             <Swiper
               autoplay={{
@@ -38,7 +38,7 @@ function Home({ topup_products, products, banners }) {
                       <img
                         src={imgPath(banner.banner)}
                         alt={banner.note}
-                        className="w-full h-auto object-cover"
+                        className="w-full h-auto object-cover rounded-2xl"
                       />
                     </a>
                   </div>
@@ -49,7 +49,7 @@ function Home({ topup_products, products, banners }) {
         </section>
       )}
       {/* Favourite games --Start-- */}
-      <section className="container mt-5 mb-10">
+      <section className="container mt-5 mb-10 ">
         <h3
           style={{
             fontFamily: "'Black Ops One', cursive",

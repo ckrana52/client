@@ -12,16 +12,16 @@ import { imgPath } from '/helpers/helpers';
 function Game({ game }) {
   const { logo, name, id } = game;
   return (
-    <div className="_product_wrapper">
+    <div>
       <Link href={`/topup/${id}`}>
         <a>
           <img
             src={imgPath(logo)}
-            className="bg-gray-100 w-full h-auto object-cover"
+            className="bg-gray-100 w-full h-auto object-cover rounded-2xl"
             alt={name}
           />
           <div className="py-2 px-1">
-            <h6 className="_h6 text-center !text-sm">{name}</h6>
+            <h6 className="_h6 text-start !text-sm">{name}</h6>
           </div>
         </a>
       </Link>

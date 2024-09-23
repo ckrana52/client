@@ -33,6 +33,8 @@ import {
   setFlashMessage,
 } from '../../helpers/helpers';
 import { globalContext } from '../_app';
+import { MdOutlineSecurity } from 'react-icons/md';
+import { AiOutlineCheckCircle } from 'react-icons/ai';
 
 function TopupOrderPage({ productData }) {
   const [selectedAccountType, setSelectedAccountType] = useState(null);
@@ -149,7 +151,28 @@ function TopupOrderPage({ productData }) {
         <div className="container">
           {hasData(productData) && (
             <div className="w-full md:w-[750px] md:mx-auto">
-              <h1 className="_h3 mb-4">{productInfo?.name}</h1>
+              <div className="flex items-center gap-x-2 mb-4">
+                <img
+                  src={imgPath(productInfo?.logo)}
+                  alt=""
+                  className="max-w-[50px] rounded-lg"
+                />
+                <div>
+                  <h1 className="_h3">{productInfo?.name}</h1>
+                  <div className="flex gap-x-2 text-sm text-gray-500">
+                    <div className="flex items-center gap-x-2">
+                      <MdOutlineSecurity />
+                      <p>Safety Guarantee</p>
+                    </div>
+                    <div className="flex items-center gap-x-2">
+                      <AiOutlineCheckCircle />
+
+                      <p>Instant Delivery</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
               <div className="relative">
                 {/* Server Error */}
                 {serverError && (
