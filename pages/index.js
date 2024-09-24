@@ -55,7 +55,7 @@ function Home({ topup_products, products, banners }) {
             fontFamily: "'Black Ops One', cursive",
             'border-color': '#0D0D7A',
           }}
-          className="_section_title border-b-4 !capitalize !text-2xl md:!text-4xl !mb-8"
+          className="_section_title border-b-4 !capitalize !text-2xl md:!text-4xl !mb-8 pt-6"
         >
           <span className="text-primary-400 rounded-lg ">GAME TOP-UP</span>
         </h3>
