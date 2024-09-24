@@ -160,11 +160,11 @@ function TopupOrderPage({ productData }) {
                 <div>
                   <h1 className="_h3">{productInfo?.name}</h1>
                   <div className="flex gap-x-2 text-sm text-gray-500">
-                    <div className="flex items-center gap-x-2">
+                    <div className="flex items-center gap-x-1">
                       <MdOutlineSecurity />
                       <p>Safety Guarantee</p>
                     </div>
-                    <div className="flex items-center gap-x-2">
+                    <div className="flex items-center gap-x-1">
                       <AiOutlineCheckCircle />
 
                       <p>Instant Delivery</p>
