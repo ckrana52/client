@@ -38,7 +38,7 @@ function Home({ topup_products, products, banners }) {
                       <img
                         src={imgPath(banner.banner)}
                         alt={banner.note}
-                        className="w-full h-auto object-cover rounded-2xl"
+                        className="w-full h-auto object-cover rounded-lg"
                       />
                     </a>
                   </div>
@@ -55,12 +55,12 @@ function Home({ topup_products, products, banners }) {
             fontFamily: "'Black Ops One', cursive",
             'border-color': '#0D0D7A',
           }}
-          className="_section_title border-b-4 !capitalize !text-2xl md:!text-4xl !mb-8"
+          className="_section_title border-b-4 !capitalize !text-2xl md:!text-4xl !mb-8 pt-6"
         >
           <span className="text-primary-400 rounded-lg ">GAME TOP-UP</span>
         </h3>
         <ActivityIndicator data={topup_products} error={!topup_products} />
-        <div className="grid grid-cols-3 md:grid-cols-5 md:justify-center mt-[40px] gap-3 md:gap-5 gap-y-6 md:gap-y-5">
+        <div className="grid grid-cols-2 md:grid-cols-5 md:justify-center mt-[40px] gap-3 md:gap-5 gap-y-6 md:gap-y-5">
           {hasData(topup_products) &&
             topup_products.map((topup_product, index) => (
               <div key={index}>
