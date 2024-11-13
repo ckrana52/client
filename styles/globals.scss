@@ -103,7 +103,7 @@
     @apply grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-3 md:gap-4;
   }
   ._product_wrapper {
-    @apply border border-gray-200 rounded-md overflow-hidden hover:shadow duration-100;
+    @apply rounded-2xl duration-200 hover:scale-105 hover:shadow-2xl overflow-hidden hover:shadow duration-100;
   }
 
   ._link {

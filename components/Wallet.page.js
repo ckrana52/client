@@ -104,7 +104,7 @@ function WalletPage() {
 
         <h1 className="_section_title mt-2">My Transaction</h1>
 
-        <div className="space-y-5 bg-white border border-gray-200 p-4 pb-6 rounded-md">
+        <div className="space-y-6 bg-white border border-gray-200 p-3 pb-5 rounded-md">
           {hasData(data) &&
             data.map((orderBlocks, index) => (
               <Fragment key={index}>
@@ -149,11 +149,11 @@ function WalletPage() {
                             : capitalized(order?.status)}
                         </p>
                         <div className="flex items-center gap-x-1">
-                          <p className="_subtitle1 !text-sm">Num:</p>
+                          
                           <p>{order?.number}</p>
                         </div>
-                        <div className="flex items-center gap-x-1">
-                          <p className="_subtitle1 !text-sm text-gray-800">
+                        <div className="flex items-center gap-x-1 ">
+                          <p className="_subtitle1 !text-sm text-gray-800 ">
                             TnxID:
                           </p>
                           <p className="text-sm">
@@ -189,7 +189,7 @@ function WalletPage() {
                       <p className="_subtitle1 !text-sm text-gray-800">
                         {order?.created_at}
                       </p>
-                      <p className="_subtitle1 !text-base font-bold">
+                      <p className="_subtitle1 !text-base font-bold ">
                         <span
                           className={`${
                             order?.status === 'cancel'
