@@ -17,7 +17,7 @@ function Game({ game }) {
         <a>
           <img
             src={imgPath(logo)}
-            className="bg-gray-100 border border-4 w-full h-auto object-cover rounded-2xl"
+            className="bg-gray-100 border border-4 w-full h-auto object-cover rounded-3xl"
             alt={name}
           />
           <div className="py-2 px-1">
